@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -111,6 +112,9 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @layer base {
   * {
@@ -119,4 +123,25 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .gradient {
+    @apply bg-gradient-to-br from-blue-600 to-purple-600;
+  }
+  .gradient-title {
+    @apply bg-gradient-to-br from-blue-600 to-purple-600 font-extrabold tracking-tighter pr-2 pb-2 text-transparent bg-clip-text;
+  }
+}
+
+.hero-image-wrapper {
+  perspective: 1000px;
+}
+.hero-image{
+  transform: rotateX(15deg) scale(1);
+  transition: transform 0.5s  ease-out;
+  will-change: transform;
+}
+.hero-image.scrolled{
+  transform:  rotateX(0deg) scale(1) translateY(20px);
 }
